@@ -66,9 +66,8 @@ const TransactionHistory = () => {
             <Balance />
             <Text text50 marginT-20 marginH-30>Transaction History</Text>
             {History.transaction_history.map((transaction) => (
-
-                <View key={transaction.signature}>
-                    <Transaction amount={transaction.amount} recipient={transaction.recipient} sender={transaction.sender} />
+                <View>
+                    <Transaction amount={transaction.amount} recipient={transaction.recipient} sender={transaction.sender} isPending={false} />
                     <View style={style.thinDivider} />
                 </View>
             ))}
