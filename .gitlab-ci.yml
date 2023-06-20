@@ -16,7 +16,8 @@ build-frontend:
   image: docker/compose:debian-1.29.2
   stage: build
   script:
-    - echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+    #- echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+
     - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
     - eval $(ssh-agent -s)
     - echo "$ID_RSA" | tr -d '\r' | ssh-add -
@@ -33,7 +34,8 @@ build-backend:
   image: docker/compose:debian-1.29.2
   stage: build
   script:
-    - echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+    #- echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+
     - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
     - eval $(ssh-agent -s)
     - echo "$ID_RSA" | tr -d '\r' | ssh-add -
@@ -50,7 +52,8 @@ build-signer:
   image: docker/compose:debian-1.29.2
   stage: build
   script:
-    - echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+    #- echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+
     - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
     - eval $(ssh-agent -s)
     - echo "$ID_RSA" | tr -d '\r' | ssh-add -
@@ -112,7 +115,8 @@ deploy-prod:
   image: docker/compose:debian-1.29.2
   stage: deploy-prod
   script:
-    - echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list 
+    #- echo "deb http://security.debian.org/debian-security bullseye-security main contrib non-free" > /etc/apt/sources.list
+ 
     - "command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )"
     - eval $(ssh-agent -s)
     - echo "$ID_RSA" | tr -d '\r' | ssh-add -
