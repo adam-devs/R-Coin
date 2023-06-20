@@ -8,13 +8,13 @@ services:
       - backend
     volumes:
       - /etc/certs:/etc/nginx/certs
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: vip
-      placement:
-        constraints:
-            - node.role == manager
+    # deploy:
+    #   mode: replicated
+    #   replicas: 1
+    #   endpoint_mode: vip
+    #   placement:
+    #     constraints:
+    #         - node.role == manager
 
   backend:
     # build: ./backend
@@ -43,10 +43,10 @@ services:
       - 8000:8000
     depends_on:
       - db
-    deploy:
-      mode: replicated
-      replicas: 4
-      endpoint_mode: vip
+    # deploy:
+    #   mode: replicated
+    #   replicas: 4
+    #   endpoint_mode: vip
 
 
   db:
@@ -61,13 +61,13 @@ services:
       - POSTGRES_USER=stablecoin_database
       - POSTGRES_PASSWORD=stablecoin
       - POSTGRES_HOST=localhost
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: dnsrr
-      placement:
-        constraints:
-            - node.role == manager
+    # deploy:
+    #   mode: replicated
+    #   replicas: 1
+    #   endpoint_mode: dnsrr
+    #   placement:
+    #     constraints:
+    #         - node.role == manager
     volumes:
       - db:/var/lib/postgresql/data/
 
@@ -80,13 +80,13 @@ services:
         protocol: tcp
         mode: host
     command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASS}
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: dnsrr
-      placement:
-        constraints:
-            - node.role == manager
+    # deploy:
+    #   mode: replicated
+    #   replicas: 1
+    #   endpoint_mode: dnsrr
+    #   placement:
+    #     constraints:
+    #         - node.role == manager
     volumes:
       - redis:/data
 
